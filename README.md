@@ -2,3 +2,6 @@
 
 ## To pull code
 `git pull`
+
+## Push tests
+- Jordan push test
