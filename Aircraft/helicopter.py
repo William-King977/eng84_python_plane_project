@@ -1,4 +1,3 @@
-import pyodbc
 from aircraft import Aircraft
 
 class Helicopter(Aircraft):

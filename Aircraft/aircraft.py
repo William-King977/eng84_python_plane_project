@@ -1,6 +1,3 @@
-import pyodbc
-
-
 class Aircraft():
     def __init__(self, aircraft_id, flight_capacicty):
         self.aircraft_id = ""
