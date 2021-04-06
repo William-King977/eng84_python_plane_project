@@ -1,4 +1,4 @@
-from Person.PersonClass import Person
+from person import Person
 
 
 class Staff(Person):

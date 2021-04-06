@@ -1,4 +1,4 @@
-from PersonClass import Person
+from person import Person
 
 
 class Passenger(Person):
