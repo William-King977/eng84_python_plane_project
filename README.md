@@ -75,7 +75,15 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 Now, use the `git pull` command to pull the changes from the remote repository (GitHub). This will merge the conflicts. 
 
 Open the file(s) that have conflicts to resolve them. The conflicted sections will be surrounded with `<<<<<<< HEAD`, `>>>>>>>` and separated by `=======` as shown below.
-
+```
+<<<<<<< HEAD
+* This is different to GitHub, from the local Git repo.
+* Who won? Well, we'll find out in June! From Git repo.
+=======
+* The change on the main branch on GitHub
+* Who's going to win WSM 2021? From GitHub test repo
+>>>>>>> 327cf2f0e9025400c0a1db24d19ddbd6ae87792a
+```
 
 After you feel the conflicts have been resolved, add, commit and push your changes. The GitHub repository should now be updated with the new changes.
 
