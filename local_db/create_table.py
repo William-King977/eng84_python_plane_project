@@ -1,4 +1,5 @@
-# This file is only used for creating the tables for the database.
+# This file is only used for creating the tables for the database
+# as well as inserting fake data into the tables.
 import sqlite3
 
 # Establish a connection with the DB
@@ -15,6 +16,17 @@ CREATE TABLE IF NOT EXISTS Passengers (
 );
 """)
 
+# Insert Passengers
+# conn.execute("""
+# INSERT INTO Passengers
+# (FirstName, LastName, PassportNumber, TaxNumber)
+# VALUES
+# ('William', 'King', '123456789', '99L99999'),
+# ('Brian', 'Burke', '987654321', '12Q34567'),
+# ('Sarah', 'Shaw', '543216789', '98B76543')
+# """)
+
+
 # Staff table
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Staff (
@@ -22,18 +34,38 @@ CREATE TABLE IF NOT EXISTS Staff (
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
     TaxNumber CHARACTER(8) NOT NULL,
-    Password CHARACTER(50) NOT NULL
+    Password VARCHAR(50) NOT NULL
 );
 """)
+
+# Insert Staff
+# conn.execute("""
+# INSERT INTO Staff
+# (FirstName, LastName, TaxNumber, Password)
+# VALUES
+# ('William', 'King', '98F12345', 'Password123')
+# """)
+
 
 # Aircraft table
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Aircraft (
     AircraftID INTEGER PRIMARY KEY AUTOINCREMENT,
     Model VARCHAR(30) NOT NULL,
-    AircraftType VARCHAR(30) NOT NULL
+    AircraftType VARCHAR(30) NOT NULL,
+    FlightCapacity INTEGER NOT NULL
 );
 """)
+
+# Insert Aircraft
+# conn.execute("""
+# INSERT INTO Aircraft
+# (Model, AircraftType, FlightCapacity)
+# VALUES
+# ('Boeing 777', 'Plane', 100),
+# ('Airbus A320', 'Plane', 100)
+# """)
+
 
 # Flights table
 conn.execute("""
