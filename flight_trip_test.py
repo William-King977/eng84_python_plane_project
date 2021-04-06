@@ -21,6 +21,9 @@ class FlightTest(unittest.TestCase):
     def test_flight_origin(self):
         self.assertEqual(self.manage.origin, self.origin)
 
+if __name__ == '__main__':
+    unittest.main()
+
 # def test_allocatePlane(self):
 #     pass
 #
