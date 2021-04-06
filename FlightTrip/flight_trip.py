@@ -4,8 +4,8 @@
 
 
 # while True:
-#     passWord = input("Please enter your password to gain access to this ait port assistant: ")
-#     if passWord == "Qwerty":
+#     password = input("Please enter your password to gain access to this airport assistant: ")
+#     if password == "Qwerty":
 #         print("Welcome")
 #         break
 #     else:
@@ -17,15 +17,15 @@ class FlightTrip:
         self.duration = int(duration)
         self.origin = str(origin)
 
-    def allocatePlane(self):
+    def allocate_plane(self):
         pass
 
-    def changePlane(self):
+    def change_plane(self):
         pass
 
-    def addPassenger(self):
+    def add_passenger(self):
         pass
 
-    def viewPassengers(self):
+    def view_passengers(self):
         pass
 

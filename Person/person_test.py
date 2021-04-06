@@ -4,6 +4,7 @@ from passenger import Passenger
 from staff import Staff
 
 
+# Test passenger
 class PassengerTest(unittest.TestCase):
     first_name = "Bob"
     last_name = "Davis"
@@ -24,6 +25,7 @@ class PassengerTest(unittest.TestCase):
         self.assertEqual(self.manage.passport_number, self.passport_number)
 
 
+# Test staff
 class StaffTest(unittest.TestCase):
     first_name = "Bob"
     last_name = "Davis"

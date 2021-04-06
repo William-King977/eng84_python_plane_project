@@ -14,6 +14,7 @@ class MyTestCase(unittest.TestCase):
     def test_flight_capacity(self):
         self.assertEqual(self.air.flight_capacity, self.flight_capacity)
 
+
 if __name__ == '__main__':
     unittest.main()
 
