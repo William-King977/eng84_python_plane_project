@@ -1,6 +1,30 @@
 # Python Plane Project
 In this project, we are tasked to create a flight management system that allows airport assistants to create and manage flight bookings.
 
+## Gitflow
+The image below is a visualisation of our Gitflow. The main branch is split into a separate branch for each contributor. Each contributor will push their changes to their own branch. After progress has been made, the individual branches will be merged back with the main branch. 
+
+![img.png](img.png)
+
+### Gitflow in Git commands
+The following steps is the merge process for our project.
+ 1. Update each of the branches by using `git pull` on each of them. This fetches the most recent version from GitHub.
+ 2. Change to the main branch with `git checkout main`. This is the branch we will merge into.
+ 3. Each branch will be merged into the main branch. The following commands will be executed:
+    ```
+    git merge arun-branch
+    git merge andrew-branch
+    git merge jordan-branch
+    git merge william-branch
+    ```
+ 4. With the main branch up-to-date, push the changes to the main branch. Next, each contributor's branch will be updated with the main branch. The following commands will be executed for each branch, where "arun" will be replaced with the contributor's respective firstname:
+    ```
+    git branch -M arun-branch
+    git checkout arun-branch
+    git push -u origin arun-branch
+    ```
+Now, each branch is up-to-date with the main branch, locally and remotely. 
+
 ## Git commands
 ### Pulling code
 Execute the following commands if you are pulling the remote repository for the first time.
@@ -90,5 +114,5 @@ After you feel the conflicts have been resolved, add, commit and push your chang
 ## Contributors
  * [Andrew Asare](https://github.com/Andrew-Asare)
  * [Arun Panesar](https://github.com/ArunPanesar42)
- * [Jordan Clarke](https://github.com/JClarke-96)
+ * [Jordan Clarke](https://github.com/JClarke-96) (currently shown as "Your Name" for some reason)
  * [William King](https://github.com/William-King977)

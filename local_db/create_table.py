@@ -1,3 +1,4 @@
+# This file is only used for creating the tables for the database.
 import sqlite3
 
 # Establish a connection with the DB
