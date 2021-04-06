@@ -12,11 +12,10 @@
 #         print("Incorrect password please try again")
 
 class FlightTrip:
-    def __init__(self):
-        self.destination = ""
-        self.duration = ""
-        self.origin = ""
-        pass
+    def __init__(self, destination, duration, origin):
+        self.destination = str(destination)
+        self.duration = int(duration)
+        self.origin = str(origin)
 
     def allocatePlane(self):
         pass
@@ -29,5 +28,4 @@ class FlightTrip:
 
     def viewPassengers(self):
         pass
-
 
