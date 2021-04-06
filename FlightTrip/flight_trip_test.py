@@ -1,7 +1,6 @@
 # Test for flight trip
 from flight_trip import FlightTrip
 import unittest
-import pytest
 
 
 class FlightTest(unittest.TestCase):
@@ -21,20 +20,17 @@ class FlightTest(unittest.TestCase):
     def test_flight_origin(self):
         self.assertEqual(self.manage.origin, self.origin)
 
+    # def test_allocatePlane(self):
+    #     pass
+    #
+    # def test_changePlane(self):
+    #     pass
+    #
+    # def test_addPassenger(self):
+    #     pass
+    #
+    # def test_viewPassengers(self):
+    #     pass
+
 if __name__ == '__main__':
     unittest.main()
-
-# def test_allocatePlane(self):
-#     pass
-#
-# def test_changePlane(self):
-#     pass
-#
-# def test_addPassenger(self):
-#     pass
-#
-# def test_viewPassengers(self):
-#     pass
-
-
-
