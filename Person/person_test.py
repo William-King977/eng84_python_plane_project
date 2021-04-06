@@ -38,6 +38,3 @@ class StaffTest(unittest.TestCase):
 
     def test_tax_number(self):
         self.assertEqual(self.manage.tax_number, self.tax_number)
-
-    def test_passport_number(self):
-        self.assertEqual(self.manage.passport_number, self.passport_number)
