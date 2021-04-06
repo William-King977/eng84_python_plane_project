@@ -30,7 +30,7 @@ conn.execute("""
 CREATE TABLE IF NOT EXISTS Aircraft (
     AircraftID INTEGER PRIMARY KEY AUTOINCREMENT,
     Model VARCHAR(30) NOT NULL,
-    AircraftType VARCHAR(30) NOT NULL,
+    AircraftType VARCHAR(30) NOT NULL
 );
 """)
 
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS Aircraft (
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Flights (
     FlightID INTEGER PRIMARY KEY AUTOINCREMENT,
+    AircraftID INTEGER,
     Origin VARCHAR(30) NOT NULL,
     Destination VARCHAR(30) NOT NULL,
     Duration INTEGER NOT NULL,
@@ -53,6 +54,8 @@ CREATE TABLE IF NOT EXISTS Flights (
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Bookings (
     BookingID INTEGER PRIMARY KEY AUTOINCREMENT,
+    FlightID INTEGER NOT NULL,
+    PassengerID INTEGER NOT NULL,
     BookingDate DATE NOT NULL,
     BookingTime TIME NOT NULL,
     FOREIGN KEY(FlightID) REFERENCES Flights(FlightID),
