@@ -1,6 +1,9 @@
 # Test cases for the db_runner.py queries.
 # Mainly testing their return type.
-from db_runner import DBRunner
+
+# NOTE: Change directory to local_db before running test!
+# Otherwise, it will run the wrong database.
+from local_db.db_runner import DBRunner
 import pytest
 import unittest
 
