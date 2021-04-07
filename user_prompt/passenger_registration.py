@@ -3,7 +3,7 @@ from person.passenger import Passenger
 
 
 class BookingManager(Passenger):
-    conn = sqlite3.connect('PlaneProjectDB')
+    conn = sqlite3.connect('PlaneProjectDB.db')
     cursor = conn.cursor()
 
     def __init__(self, first_name, last_name, tax_number, passport_number):
@@ -15,7 +15,7 @@ class BookingManager(Passenger):
 
     def start_connection(self):
         try:
-            sqliteConnection = sqlite3.connect('PlaneProjectDB')
+            sqliteConnection = sqlite3.connect('PlaneProjectDB.db')
             cursor = sqliteConnection.cursor()
             print("Successfuly connected")
         except sqlite3.Error as error:
@@ -36,10 +36,10 @@ class BookingManager(Passenger):
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
-        conn = sqlite3.connect('PlaneProjectDB')
+        conn = sqlite3.connect('PlaneProjectDB.db')
         cursor = conn.cursor()
         cursor.execute("""
-        INSERT INTO PASSENGERS(Firstname, SecondName, PassportNumber, TaxNumber)
+        INSERT INTO Passengers(FirstName, LastName, PassportNumber, TaxNumber)
         VALUES (?,?,?,?)
         """, (self.first_name, self.last_name, self.passport_number, self.tax_number))
         conn.commit()
