@@ -20,8 +20,8 @@ class StaffMember(Staff):
             self.last_name = input("Input staff last name:    ")
             self.tax_number = input("Input staff tax number:     ")
             print("Name:", self.first_name, self.last_name, "    tax.no:", self.tax_number)
-            check = input("Is the above information correct? Y/N    ".upper())
-            if check in ["YES", "TRUE", "T", "Y"]:
+            check = input("Is the above information correct? Y/N    ")
+            if check.upper() in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
     def create_username(self):
@@ -29,7 +29,7 @@ class StaffMember(Staff):
         while not correct_info:
             self.username = input("Choose a username:    ")
             print("Username:", self.username)
-            check = input("Is the above information correct? Y/N    ".upper())
+            check = input("Is the above information correct? Y/N    ")
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
