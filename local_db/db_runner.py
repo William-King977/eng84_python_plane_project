@@ -56,7 +56,7 @@ class DBRunner:
                           f"VALUES "
                           f"({first_name}, {last_name}, {tax_number}, {passport_number});")
         self.conn.commit()
-        new_passenger_id = self.conn.execute("SELECT PassengerID FROM Passengers")
+        new_passenger_id = self.conn.execute("SELECT PassengerID FROM Passengers").fetchone()[0][0]
         self.__create_booking(new_passenger_id, flight_id)
 
     # Creates a booking for the added passenger
@@ -64,7 +64,8 @@ class DBRunner:
         self.conn.execute(f"INSERT INTO Bookings "
                           f"(FlightID, PassengerID, BookingDate, BookingTime) "
                           f"VALUES "
-                          f"({flight_id}, {passenger_id}, strftime('%d/%m/%Y','now'), strftime('%H:%M','now'));")
+                          f"({flight_id}, {passenger_id}, strftime('%d/%m/%Y','now'), "
+                          f"strftime('%H:%M','now'));")
         self.conn.commit()
 
     # Creates a new flight
@@ -90,4 +91,4 @@ if __name__ == "__main__":
     runner = DBRunner()
     print(runner.get_flight_passengers(1))
     print(runner.get_available_flights())
-    print(runner.conn.execute("SELECT * FROM Passengers").fetchall())
+    print(runner.conn.execute("SELECT * FROM Passengers").fetchall()[0][0])
