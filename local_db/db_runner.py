@@ -21,8 +21,18 @@ class DBRunner:
                                    f"WHERE b.FlightID = {flight_id};").fetchall()
         return result
 
+    # Gets every flight
+    def get_all_flights(self):
+        return self.conn.execute("SELECT * FROM Flights;").fetchall()
+
+    # Gets flights with a departure date of today or later
+    def get_available_flights(self):
+        # Date format is dd/mm/YYYY
+        return self.conn.execute("SELECT * FROM Flights "
+                                 "WHERE DepartureDate >= strftime('%d/%m/%Y','now');").fetchall()
 
 
 if __name__ == "__main__":
     runner = DBRunner()
     print(runner.get_flight_passengers(1))
+    print(runner.get_available_flights())

@@ -17,8 +17,8 @@ class TestDBRunner(unittest.TestCase):
     def test_get_all_flights(self):
         self.assertEqual(type(self.db_obj.get_all_flights()), list)
 
-    def test_get_flight_with_id(self):
-        self.assertEqual(type(self.db_obj.get_flight_with_id(1)), list)
+    def test_get_available_flights(self):
+        self.assertEqual(type(self.db_obj.get_available_flights()), list)
 
 
 
