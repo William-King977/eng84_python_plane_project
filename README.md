@@ -1,6 +1,43 @@
 # Python Plane Project
 In this project, we are tasked to create a flight management system that allows airport assistants to create and manage flight bookings.
 
+## Introduction
+In this project we were asked to design a flight trip booking system for airport staff. The basic requirements
+for this were outlined by several user stories. The user stories stated that staff should be able to:
+
+- Create passengers with a name and passport number, so they can be added to a flight
+- Create a flight trip with a specific destination.
+- Be able to assign and/or change a plane in flight trip by inputting their password so that they can handle the problem.
+- Be able to add passengers to flight trip so that they can sell tickets to them.
+- Be able to generate a flight attendees list report that lists every passenger's name and passport so that their identity document can be checked.
+
+## Tech Stack and methodologies
+For this project we used the following tech stack:
+
+- Python
+- SQL lite 
+
+The methodology that we used was:
+
+- Test Driven Development 
+
+## Agile and Scrum
+
+We decided to use a Scrum framework to implement Agile. We created this board using Trello. Our board included:
+- A Backlog which would outline what we want to do in the future
+- User Stories, highlighting each individual user story along with their acceptance criteria and the definition of done
+- Daily sprints with sprint meetings ending with sprint retrospectives.
+- A Doing board for what is to be done on the day.
+- A Testing board for any code which we need to test.
+- A Done board for completed work.
+- And finally an Important info board for any important info that we need to keep in my mind.
+
+## Database
+
+## Entity Relationship Diagram
+To design the database we used an ERD diagram.
+- This helped us visualise the database clearly, seeing how our app would connect to our database, this helped us reduce any errors.
+
 ## Git commands
 ### Pulling code
 Execute the following commands if you are pulling the remote repository for the first time.
