@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS Staff (
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
     TaxNumber CHARACTER(8) NOT NULL,
+    Username VARCHAR(50) NOT NULL,
     Password VARCHAR(50) NOT NULL
 );
 """)
