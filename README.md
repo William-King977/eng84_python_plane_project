@@ -33,7 +33,7 @@ To design the database we used an ERD diagram.
 - This helped us visualise the database clearly, seeing how our app would connect to our database, this helped us reduce any errors.
 
 ## Gitflow
-The image below is a visualisation of our Gitflow. The main branch is split into a separate branch for each contributor. Each contributor will push their changes to their own branch. After progress has been made, the individual branches will be merged back with the main branch. 
+The image below is a visualisation of our Gitflow. The main branch is split into a separate branch for each contributor. Each contributor will push their changes to their own branch. After progress has been made, there will a code review for each branch. The individual branches will be merged back with the main branch after passing the code review. 
 
 ![img.png](images/gitflow.png)
 
