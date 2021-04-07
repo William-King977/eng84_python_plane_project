@@ -1,7 +1,7 @@
 import unittest
 import pytest
-from aircraft import Aircraft
-from plane import Plane
+from aircraft.aircraft import Aircraft
+from aircraft.plane import Plane
 
 # Test Aircraft
 class MyTestCase(unittest.TestCase):

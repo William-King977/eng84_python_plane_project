@@ -1,5 +1,5 @@
 # Test for flight trip
-from flight_trip import FlightTrip
+from flight_trip.flight_trip import FlightTrip
 import unittest
 
 
