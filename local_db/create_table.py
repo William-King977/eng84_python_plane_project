@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS Staff (
 # Insert Staff
 # conn.execute("""
 # INSERT INTO Staff
-# (FirstName, LastName, TaxNumber, Password)
+# (FirstName, LastName, TaxNumber, Username, Password)
 # VALUES
-# ('William', 'King', '98F12345', 'Password123')
+# ('William', 'King', '98F12345', 'KingBigW', 'Password123')
 # """)
 
 
