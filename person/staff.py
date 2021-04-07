@@ -1,7 +1,8 @@
-from person import Person
+from person.person import Person
 
 
 class Staff(Person):
-    def __init__(self, first_name, last_name, tax_number):
+    def __init__(self, first_name, last_name, tax_number, username, password):
         super().__init__(first_name, last_name, tax_number)
-        self.password = "Passw0rd2018"
+        self.username = username
+        self.password = password
