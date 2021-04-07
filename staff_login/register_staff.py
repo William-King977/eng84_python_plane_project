@@ -1,10 +1,17 @@
+import sqlite3
 from person.staff import Staff
-from local_db.create_table import conn
+#from local_db.create_table import conn
 
 
 class StaffMember(Staff):
+
     def __init__(self, first_name, last_name, tax_number, username, password):
         super().__init__(first_name, last_name, tax_number, username, password)
+
+        self.get_staff_info()
+        self.create_username()
+        self.create_password()
+        self.register_staff()
 
     def get_staff_info(self):
         # Get Staff information
@@ -12,9 +19,9 @@ class StaffMember(Staff):
         while not correct_info:
             self.first_name = input("Input staff first name:    ")
             self.last_name = input("Input staff last name:    ")
-            self.tax_number = input(int("Input staff tax number:     "))
+            self.tax_number = input("Input staff tax number:     ")
             print("Name:", self.first_name, self.last_name, "    tax.no:", self.tax_number)
-            check = input("Is the above information correct? Y/N".upper())
+            check = input("Is the above information correct? Y/N    ".upper())
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
@@ -23,7 +30,7 @@ class StaffMember(Staff):
         while not correct_info:
             self.username = input("Choose a username:    ")
             print("Username:", self.username)
-            check = input("Is the above information correct? Y/N".upper())
+            check = input("Is the above information correct? Y/N    ".upper())
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
@@ -38,10 +45,16 @@ class StaffMember(Staff):
             else:
                 print("Please type the same password.")
 
-    def register_staff(self, first_name, last_name, tax_number, username, password):
-        conn.execute(f"INSERT INTO Staff"
+    def register_staff(self):
+        conn = sqlite3.connect('PlaneProjectDB.db')
+        cursor = conn.cursor()
+        cursor.execute(f"INSERT INTO Staff"
                      f"(FirstName, LastName, TaxNumber, Username, Password)"
                      f"VALUES"
                      f"({self.first_name}, {self.last_name}, {self.tax_number}, {self.username}, {self.password});")
         # Save the changes.
-        self.conn.commit()
+        conn.commit()
+
+
+if __name__ == "__main__":
+    StaffMember('', '', '', '', '')
