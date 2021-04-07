@@ -32,5 +32,5 @@ class FlightTest(unittest.TestCase):
     # def test_viewPassengers(self):
     #     pass
 
-
-
+if __name__ == '__main__':
+    unittest.main()
