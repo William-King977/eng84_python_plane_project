@@ -3,7 +3,6 @@
 
 # Runs until the user wants to exit.
 # The staff member is asked to login.
-#############################################################################################################
 while True:
     user_option = input("Do you want to login or register? \n"
                         "1. Login \n"
@@ -25,4 +24,3 @@ while True:
         break
     else:
         print("Invalid option, please enter again.")
-############################################################################################################
