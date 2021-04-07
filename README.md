@@ -3,10 +3,10 @@
 In this project we were asked to design a flight trip booking system for airport staff. The basic requirements
 for this were outlined by several user stories. The user stories stated that staff should be able to:
 
-- Create passengers with a name and passport number, so they can be added to a flight
+- Create passengers with a name and passport number, so they can be added to a flight.
 - Create a flight trip with a specific destination.
 - Be able to assign and/or change a plane in flight trip by inputting their password so that they can handle the problem.
-- Be able to add passengers to flight trip so that they can sell tickets to them.
+- Be able to add passengers to a flight trip so that they can sell tickets to them.
 - Be able to generate a flight attendees list report that lists every passenger's name and passport so that their identity document can be checked.
 
 ## Tech Stack and methodologies
@@ -19,8 +19,8 @@ The methodology that we used was:
 
 ## Agile and Scrum
 We decided to use a Scrum framework to implement Agile. We created this board using Trello. Our board included:
-- A Backlog which would outline what we want to do in the future
-- User Stories, highlighting each individual user story along with their acceptance criteria and the definition of done
+- A Backlog which would outline what we want to do in the future.
+- User Stories, highlighting each individual user story along with their acceptance criteria and definition of done.
 - Daily sprints with sprint meetings ending with sprint retrospectives.
 - A Doing board for what is to be done on the day.
 - A Testing board for any code which we need to test.

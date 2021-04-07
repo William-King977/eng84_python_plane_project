@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS Staff (
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
     TaxNumber CHARACTER(8) NOT NULL,
+    Username VARCHAR(50) NOT NULL,
     Password VARCHAR(50) NOT NULL
 );
 """)
@@ -41,9 +42,9 @@ CREATE TABLE IF NOT EXISTS Staff (
 # Insert Staff
 # conn.execute("""
 # INSERT INTO Staff
-# (FirstName, LastName, TaxNumber, Password)
+# (FirstName, LastName, TaxNumber, Username, Password)
 # VALUES
-# ('William', 'King', '98F12345', 'Password123')
+# ('William', 'King', '98F12345', 'KingBigW', 'Password123')
 # """)
 
 
