@@ -1,7 +1,7 @@
 import unittest
 import pytest
-from passenger import Passenger
-from staff import Staff
+from person.passenger import Passenger
+from person.staff import Staff
 
 
 # Test passenger
