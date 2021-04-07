@@ -1,5 +1,7 @@
 # Runs the main program.
 # Functionality is split into separate Python modules (.py files).
+from staff_login import staff_login, register_staff
+from allocation import flight_allocation
 
 # Runs until the user wants to exit.
 # The staff member is asked to login.
@@ -8,17 +10,14 @@ while True:
                         "1. Login \n"
                         "2. Register \n"
                         "3. Quit \n"
-                        "Enter option here: ")
+                        "=> ")
     if user_option == "1":
-        # This print statement will be replaced with a function.
         # The user will be prompt to login.
-        print("Login")
-        continue
+        staff_login.login()
+        flight_allocation.main_menu()
     elif user_option == "2":
-        # This print statement will be replaced with a function.
         # The user will be prompt to register with their details.
-        print("Register")
-
+        register_staff.RegisterStaff()
     elif user_option == "3":
         print("Exiting program.")
         break

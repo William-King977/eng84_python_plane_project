@@ -23,6 +23,9 @@ class TestDBRunner(unittest.TestCase):
     def test_get_available_flights(self):
         self.assertEqual(type(self.db_obj.get_available_flights()), list)
 
+    def test_get_all_planes(self):
+        self.assertEqual(type(self.db_obj.get_all_planes()), list)
+
 
 
 

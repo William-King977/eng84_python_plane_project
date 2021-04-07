@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Passengers (
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
     PassportNumber CHARACTER(9) NOT NULL,
-    TaxNumber CHARACTER(8) NOT NULL
+    TaxNumber VARCHAR(10) NOT NULL
 );
 """)
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS Staff (
 # INSERT INTO Staff
 # (FirstName, LastName, TaxNumber, Username, Password)
 # VALUES
-# ('William', 'King', '98F12345', 'KingBigW', 'Password123')
+# ('William', 'King', '98F12345', 'KingBigW', 'password123')
 # """)
 
 
