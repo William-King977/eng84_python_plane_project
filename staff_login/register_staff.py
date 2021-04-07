@@ -1,6 +1,5 @@
 import sqlite3
 from person.staff import Staff
-#from local_db.create_table import conn
 
 
 class StaffMember(Staff):
@@ -21,8 +20,8 @@ class StaffMember(Staff):
             self.last_name = input("Input staff last name:    ")
             self.tax_number = input("Input staff tax number:     ")
             print("Name:", self.first_name, self.last_name, "    tax.no:", self.tax_number)
-            check = input("Is the above information correct? Y/N    ".upper())
-            if check in ["YES", "TRUE", "T", "Y"]:
+            check = input("Is the above information correct? Y/N    ")
+            if check.upper() in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
     def create_username(self):
@@ -30,7 +29,7 @@ class StaffMember(Staff):
         while not correct_info:
             self.username = input("Choose a username:    ")
             print("Username:", self.username)
-            check = input("Is the above information correct? Y/N    ".upper())
+            check = input("Is the above information correct? Y/N    ")
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
@@ -46,14 +45,13 @@ class StaffMember(Staff):
                 print("Please type the same password.")
 
     def register_staff(self):
-        conn = sqlite3.connect('PlaneProjectDB.db')
+        conn = sqlite3.connect("PlaneProjectDB.db")
         cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO Staff"
-                     f"(FirstName, LastName, TaxNumber, Username, Password)"
-                     f"VALUES"
-                     f"({self.first_name}, {self.last_name}, {self.tax_number}, {self.username}, {self.password});")
+        cursor.execute(f"""INSERT INTO Staff(FirstName, LastName, TaxNumber, Username, Password)
+                       VALUES("{self.first_name}", "{self.last_name}", "{self.tax_number}", "{self.username}", "{self.password}")""")
         # Save the changes.
         conn.commit()
+        conn.close()
 
 
 if __name__ == "__main__":
