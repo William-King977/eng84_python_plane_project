@@ -1,6 +1,4 @@
 # Python Plane Project
-In this project, we are tasked to create a flight management system that allows airport assistants to create and manage flight bookings.
-
 ## Introduction
 In this project we were asked to design a flight trip booking system for airport staff. The basic requirements
 for this were outlined by several user stories. The user stories stated that staff should be able to:
@@ -12,17 +10,14 @@ for this were outlined by several user stories. The user stories stated that sta
 - Be able to generate a flight attendees list report that lists every passenger's name and passport so that their identity document can be checked.
 
 ## Tech Stack and methodologies
-For this project we used the following tech stack:
-
+For this project, we used the following tech stack:
 - Python
 - SQL lite 
 
 The methodology that we used was:
-
 - Test Driven Development 
 
 ## Agile and Scrum
-
 We decided to use a Scrum framework to implement Agile. We created this board using Trello. Our board included:
 - A Backlog which would outline what we want to do in the future
 - User Stories, highlighting each individual user story along with their acceptance criteria and the definition of done
@@ -30,13 +25,36 @@ We decided to use a Scrum framework to implement Agile. We created this board us
 - A Doing board for what is to be done on the day.
 - A Testing board for any code which we need to test.
 - A Done board for completed work.
-- And finally an Important info board for any important info that we need to keep in my mind.
+- And finally, an Important info board for any important info that we need to keep in mind.
 
 ## Database
-
 ## Entity Relationship Diagram
 To design the database we used an ERD diagram.
 - This helped us visualise the database clearly, seeing how our app would connect to our database, this helped us reduce any errors.
+
+## Gitflow
+The image below is a visualisation of our Gitflow. The main branch is split into a separate branch for each contributor. Each contributor will push their changes to their own branch. After progress has been made, the individual branches will be merged back with the main branch. 
+
+![img.png](img.png)
+
+### Gitflow in Git commands
+The following steps is the merge process for our project.
+ 1. Update each of the branches by using `git pull` on each of them. This fetches the most recent version from GitHub.
+ 2. Change to the main branch with `git checkout main`. This is the branch we will merge into.
+ 3. Each branch will be merged into the main branch. The following commands will be executed:
+    ```
+    git merge arun-branch
+    git merge andrew-branch
+    git merge jordan-branch
+    git merge william-branch
+    ```
+ 4. With the main branch up-to-date, push the changes to the main branch. Next, each contributor's branch will be updated with the main branch. The following commands will be executed for each branch, where "arun" will be replaced with the contributor's respective firstname:
+    ```
+    git branch -M arun-branch
+    git checkout arun-branch
+    git push -u origin arun-branch
+    ```
+Now, each branch is up-to-date with the main branch, locally and remotely.
 
 ## Git commands
 ### Pulling code
@@ -127,5 +145,5 @@ After you feel the conflicts have been resolved, add, commit and push your chang
 ## Contributors
  * [Andrew Asare](https://github.com/Andrew-Asare)
  * [Arun Panesar](https://github.com/ArunPanesar42)
- * [Jordan Clarke](https://github.com/JClarke-96)
+ * [Jordan Clarke](https://github.com/JClarke-96) (currently shown as "Your Name" for some reason)
  * [William King](https://github.com/William-King977)
