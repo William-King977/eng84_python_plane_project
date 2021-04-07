@@ -32,8 +32,8 @@ class BookingManager(Passenger):
             self.passport_number = input("Input the passengers passport number:")
             self.tax_number = input("Input passengers tax number:     ")
             print("Name:", self.first_name, "Last Name", self.last_name, "tax.no:", self.tax_number, "and Passport.no:", self.passport_number)
-            check = input("Is the above information correct? Y/N".upper())
-            if check in ["YES", "TRUE", "T", "Y"]:
+            check = input("Is the above information correct? Y/N")
+            if check.upper() in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
         conn = sqlite3.connect('PlaneProjectDB.db')
