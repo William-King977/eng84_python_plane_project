@@ -22,6 +22,7 @@ class DBRunner:
         return result
 
 
+
 if __name__ == "__main__":
     runner = DBRunner()
     print(runner.get_flight_passengers(1))
