@@ -28,14 +28,14 @@ We decided to use a Scrum framework to implement Agile. We created this board us
 - And finally, an Important info board for any important info that we need to keep in mind.
 
 ## Database
-## Entity Relationship Diagram
+### Entity Relationship Diagram
 To design the database we used an ERD diagram.
 - This helped us visualise the database clearly, seeing how our app would connect to our database, this helped us reduce any errors.
 
 ## Gitflow
 The image below is a visualisation of our Gitflow. The main branch is split into a separate branch for each contributor. Each contributor will push their changes to their own branch. After progress has been made, the individual branches will be merged back with the main branch. 
 
-![img.png](img.png)
+![img.png](images/gitflow.png)
 
 ### Gitflow in Git commands
 The following steps is the merge process for our project.
