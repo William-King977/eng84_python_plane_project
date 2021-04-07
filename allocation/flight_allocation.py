@@ -1,33 +1,39 @@
 from user_prompt import passenger_registration
 from local_db import db_runner
+from prettytable import PrettyTable
+from allocation import flight_manager
 
 conn = db_runner.DBRunner()
 
 
-def plane_allocation():
-    for i in range(3):
-        password = input("Enter password")
-        if password == "password":
-            plane_option = input("-= Plane Management =-\n"
-                                 "Select one of the options\n"
-                                 "1. Display all planes\n"
-                                 "2. Allocate/change a plane for a flight\n"
-                                 "3. Go back\n"
-                                 "=> ")
-            if plane_option == "1":
-                print("ALL ACTIVE PLANES")
-            elif plane_option == "2":
-                print("Enter the flight ID of the flight to modify: ")
-            elif plane_option == "3":
-                print("Exiting plane management.")
-                break
-            else:
-                print("Invalid option, please enter again.")
+def manage_flights():
+    f_manager = flight_manager.FlightManager()
+    while True:
+        plane_option = input("-= Flight Management =-\n"
+                             "Select one of the options\n"
+                             "1. Create a new flight\n"
+                             "2. Display all available flights\n"
+                             "3. Display all planes\n"
+                             "4. Allocate/change a plane for a flight\n"
+                             "5. Go back\n"
+                             "=> ")
+        if plane_option == "1":
+            print("Creating a new flight")
+            f_manager.create_new_flight()
+        elif plane_option == "2":
+            print("All available flights:")
+            f_manager.display_available_flights()
+        elif plane_option == "3":
+            print("All active planes:")
+            f_manager.display_all_planes()
+        elif plane_option == "4":
+            print("Allocating plane to a flight")
+            f_manager.allocate_plane()
+        elif plane_option == "5":
+            print("Exiting flight management.")
+            break
         else:
-            print("Incorrect Password, please try again.")
-            if i == 2:
-                print("Too many attempts, access denied.")
-                break
+            print("Invalid option, please enter again.")
 
 
 def assign_passengers():
@@ -39,45 +45,39 @@ def assign_passengers():
             break
 
 
-def display_available_flights():
-    available_flights = conn.get_available_flights()
-    if len(available_flights) == 0:
-        print("No flights are currently available.")
+def display_flight_passengers():
+    flight_id = int(input("Enter the flight ID for the flight: "))
+    flight_passengers = conn.get_flight_passengers(flight_id)
+
+    if len(flight_passengers) == 0:
+        print("No passengers for that flight.")
     else:
-        for flight in available_flights:
-            print(f"""Flight ID:      {flight[0]}
-                      Origin:         {flight[1]}
-                      Destination:    {flight[2]}
-                      Duration:       {flight[3]}
-                      Departure Date: {flight[4]}
-                      Departure Time: {flight[5]}
-                      Arrival Date:   {flight[6]}
-                      Arrival Time:   {flight[7]} \n
-                   """)
+        passenger_table = PrettyTable(["First Name", "Last Name", "Passport Number"])
+        print(flight_passengers)
+        for passenger in flight_passengers:
+            passenger_table.add_row(passenger)
+        print(passenger_table)
 
 
 def main_menu():
     while True:
         allocation_choice = input("-= flight allocation =-\n"
                                   "Select one of the options\n"
-                                  "1. Control for Plane Allocation\n"
-                                  "2. Control for Passenger Allocation \n"
-                                  "3. Create a new flight\n"
-                                  "4. Display available flights\n"
-                                  "5. Log out\n"
+                                  "1. Manage Flights\n"
+                                  "2. Control for Passenger Allocation\n"
+                                  "3. Display Passengers for a flight\n"
+                                  "4. Log out\n"
                                   "=> ")
         if allocation_choice == "1":
-            print("PLANE ALLOCATION FOR FLIGHTS ")
-            plane_allocation()
+            print("Flight Management")
+            manage_flights()
         elif allocation_choice == "2":
-            print("PASSENGER ALLOCATION FOR FLIGHTS ")
+            print("Passenger Allocation For Flights")
             assign_passengers()
         elif allocation_choice == "3":
-            print("CREATE A NEW FLIGHT")
+            print("Display Passengers for a Flight")
+            display_flight_passengers()
         elif allocation_choice == "4":
-            print("AVAILABLE FLIGHTS")
-            display_available_flights()
-        elif allocation_choice == "5":
             print("Logging out.")
             break
         else:

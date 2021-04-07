@@ -10,7 +10,7 @@ while True:
                         "1. Login \n"
                         "2. Register \n"
                         "3. Quit \n"
-                        "Enter option here: ")
+                        "=> ")
     if user_option == "1":
         # The user will be prompt to login.
         staff_login.login()
