@@ -1,16 +1,16 @@
 import unittest
 import pytest
-from person.passenger import Passenger
-from person.staff import Staff
+from passenger import Passenger
+from staff import Staff
 
 
 # Test passenger
 class PassengerTest(unittest.TestCase):
     first_name = "Bob"
     last_name = "Davis"
-    tax_number = "1233"
+    ticket_number = "1233"
     passport_number = "0123"
-    manage = Passenger(first_name, last_name, tax_number, passport_number)
+    manage = Passenger(first_name, last_name, ticket_number, passport_number)
 
     def test_first_name(self):
         self.assertEqual(self.manage.first_name, self.first_name)
@@ -18,8 +18,8 @@ class PassengerTest(unittest.TestCase):
     def test_last_name(self):
         self.assertEqual(self.manage.last_name, self.last_name)
 
-    def test_tax_number(self):
-        self.assertEqual(self.manage.tax_number, self.tax_number)
+    def test_ticket_number(self):
+        self.assertEqual(self.manage.ticket_number, self.ticket_number)
 
     def test_passport_number(self):
         self.assertEqual(self.manage.passport_number, self.passport_number)
@@ -29,8 +29,9 @@ class PassengerTest(unittest.TestCase):
 class StaffTest(unittest.TestCase):
     first_name = "Bob"
     last_name = "Davis"
-    tax_number = "1233"
-    manage = Staff(first_name, last_name, tax_number)
+    username = "BDavis"
+    password = "password123"
+    manage = Staff(first_name, last_name, username, password)
 
     def test_first_name(self):
         self.assertEqual(self.manage.first_name, self.first_name)
@@ -38,5 +39,8 @@ class StaffTest(unittest.TestCase):
     def test_last_name(self):
         self.assertEqual(self.manage.last_name, self.last_name)
 
-    def test_tax_number(self):
-        self.assertEqual(self.manage.tax_number, self.tax_number)
+    def test_username(self):
+        self.assertEqual(self.manage.username, self.username)
+
+    def test_password(self):
+        self.assertEqual(self.manage.password, self.password)

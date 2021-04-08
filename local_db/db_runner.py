@@ -34,7 +34,7 @@ class DBRunner:
 
     # Gets every passenger for a particular flight
     def get_flight_passengers(self, flight_id):
-        result = self.cursor.execute(f"SELECT FirstName, LastName, PassportNumber "
+        result = self.cursor.execute(f"SELECT p.FirstName, p.LastName, p.PassportNumber "
                                      f"FROM Passengers p INNER JOIN Bookings b "
                                      f"ON p.PassengerID = b.PassengerID "
                                      f"WHERE b.FlightID = {flight_id};").fetchall()
@@ -59,11 +59,11 @@ class DBRunner:
         return result
 
     # Adds a new staff member to the system.
-    def register_staff(self, first_name, last_name, tax_number, username, password):
+    def register_staff(self, first_name, last_name, username, password):
         self.cursor.execute(f"INSERT INTO Staff "
-                            f"(FirstName, LastName, TaxNumber, Username, Password) "
+                            f"(FirstName, LastName, Username, Password) "
                             f"VALUES "
-                            f"('{first_name}', '{last_name}', '{tax_number}', '{username}', '{password}');")
+                            f"('{first_name}', '{last_name}', '{username}', '{password}');")
         # Save the changes.
         self.conn.commit()
 
@@ -76,19 +76,19 @@ class DBRunner:
             return False
 
         # Then check the password.
-        return staff_member[5] == password
+        return staff_member[4] == password
 
     # Adds a passenger to a flight with their details
-    def register_passenger(self, first_name, last_name, tax_number, passport_number, flight_id):
+    def register_passenger(self, first_name, last_name, ticket_number, passport_number, flight_id):
         self.cursor.execute(f"INSERT INTO Passengers "
-                            f"(FirstName, LastName, TaxNumber, PassportNumber) "
+                            f"(FirstName, LastName, TicketNumber, PassportNumber) "
                             f"VALUES "
-                            f"('{first_name}', '{last_name}', '{tax_number}', '{passport_number}');")
+                            f"('{first_name}', '{last_name}', '{ticket_number}', '{passport_number}');")
         self.conn.commit()
         new_passenger_id = self.cursor.execute(f"SELECT PassengerID FROM Passengers "
                                                f"WHERE FirstName = '{first_name}' AND "
                                                f"LastName = '{last_name}' AND "
-                                               f"TaxNumber = '{tax_number}' AND "
+                                               f"TicketNumber = '{ticket_number}' AND "
                                                f"PassportNumber = '{passport_number}'").fetchone()[0]
         self.__create_booking(new_passenger_id, flight_id)
 
@@ -127,3 +127,9 @@ if __name__ == "__main__":
     print(runner.conn.execute("SELECT * FROM Passengers").fetchall())
     print(runner.conn.execute("SELECT * FROM Bookings").fetchall())
     print(runner.check_staff_login("KingBigW", "Password123"))
+
+    # [(1, 1, 'Heathrow', 'Palma', 180, '11/04/2021', '13:00', '11/04/2021', '16:00'),
+    #  (2, 1, 'Dublin', 'Paris', 120, '15/04/2021', '23:00', '16/04/2021', '01:00')]
+    # [(1, 'Chris', 'Wilson', '1234', '12345678'), (2, 'Brian', 'Burke', '98765', '98765432'),
+    #  (3, 'Sarah', 'Shaw', '57493', '57493901')]
+    # [(1, 1, 1, '08/04/2021', '08:14'), (2, 1, 2, '08/04/2021', '08:15'), (3, 2, 3, '08/04/2021', '08:15')]

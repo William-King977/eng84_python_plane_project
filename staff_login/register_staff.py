@@ -15,8 +15,7 @@ class RegisterStaff:
         while not correct_info:
             self.first_name = input("Input staff first name: ")
             self.last_name = input("Input staff last name: ")
-            self.tax_number = input("Input staff tax number: ")
-            print("Name:", self.first_name, self.last_name, " |  Tax.no:", self.tax_number)
+            print("First name:", self.first_name, "| Last name:",self.last_name)
             check = input("Is the above information correct (Y/N)? ").upper()
             if check.upper() in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
@@ -43,8 +42,7 @@ class RegisterStaff:
 
     def register_new_staff(self):
         conn = db_runner.DBRunner()
-        conn.register_staff(self.first_name, self.last_name, self.tax_number,
-                            self.username, self.password)
+        conn.register_staff(self.first_name, self.last_name, self.username, self.password)
         print("Registration successful.")
 
 

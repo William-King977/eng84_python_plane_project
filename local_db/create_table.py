@@ -5,21 +5,22 @@ import sqlite3
 # Establish a connection with the DB
 conn = sqlite3.connect("PlaneProjectDB.db")
 
+
 # Passengers table
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Passengers (
     PassengerID INTEGER PRIMARY KEY AUTOINCREMENT,
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
-    PassportNumber CHARACTER(9) NOT NULL,
-    TaxNumber VARCHAR(10) NOT NULL
+    TicketNumber VARCHAR(10) NOT NULL,
+    PassportNumber CHARACTER(9) NOT NULL
 );
 """)
 
 # Insert Passengers
 # conn.execute("""
 # INSERT INTO Passengers
-# (FirstName, LastName, PassportNumber, TaxNumber)
+# (FirstName, LastName, PassportNumber, TicketNumber)
 # VALUES
 # ('William', 'King', '123456789', '99L99999'),
 # ('Brian', 'Burke', '987654321', '12Q34567'),
@@ -33,7 +34,6 @@ CREATE TABLE IF NOT EXISTS Staff (
     StaffID INTEGER PRIMARY KEY AUTOINCREMENT,
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
-    TaxNumber CHARACTER(8) NOT NULL,
     Username VARCHAR(50) NOT NULL,
     Password VARCHAR(50) NOT NULL
 );
@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS Staff (
 # Insert Staff
 # conn.execute("""
 # INSERT INTO Staff
-# (FirstName, LastName, TaxNumber, Username, Password)
+# (FirstName, LastName, Username, Password)
 # VALUES
-# ('William', 'King', '98F12345', 'KingBigW', 'password123')
+# ('William', 'King', 'WKing', 'password123')
 # """)
 
 
