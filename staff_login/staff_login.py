@@ -6,9 +6,10 @@ def login():
     for i in range(3):
         username = input("Username: ")
         password = input("Password: ")
-
         conn = db_runner.DBRunner()
+
         if conn.check_staff_login(username, password):
+            conn.set_curr_password(password)
             print("Login Successful.")
             break
         else:

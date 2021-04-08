@@ -97,6 +97,14 @@ CREATE TABLE IF NOT EXISTS Bookings (
 );
 """)
 
+
+# Current password table (holds one password)
+conn.execute("""
+CREATE TABLE IF NOT EXISTS CurrentPassword (
+    Password VARCHAR(50) NOT NULL
+);
+""")
+
 # Apply the changes
 conn.commit()
 

@@ -17,7 +17,7 @@ class BookingManager:
             self.passport_number = input("Input the passenger's passport number: ")
             self.ticket_number = input("Input passenger's ticket number: ")
             self.flight_id = int(input("Input the flight ID: "))
-            print("Name:", self.first_name, "| Last Name", self.last_name, "| Ticket.no:", self.ticket_number,
+            print("Name:", self.first_name, "| Last Name:", self.last_name, "| Ticket.no:", self.ticket_number,
                   "| Passport.no:", self.passport_number, "| Flight ID:", self.flight_id)
             check = input("Is the above information correct (Y/N)? ").upper()
             if check in ["YES", "TRUE", "T", "Y"]:
