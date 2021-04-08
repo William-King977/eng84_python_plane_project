@@ -67,7 +67,6 @@ CREATE TABLE IF NOT EXISTS Aircraft (
 # ('Airbus A320', 'Plane', 100)
 # """)
 
-
 # Flights table
 conn.execute("""
 CREATE TABLE IF NOT EXISTS Flights (
@@ -80,6 +79,7 @@ CREATE TABLE IF NOT EXISTS Flights (
     DepartureTime TIME NOT NULL,
     ArrivalDate DATE NOT NULL,
     ArrivalTime TIME NOT NULL,
+    CostOfFlight INTEGER NOT NULL,
     NumberOfPassengers INTEGER NOT NULL,
     FOREIGN KEY(AircraftID) REFERENCES Aircraft(AircraftID)
 );

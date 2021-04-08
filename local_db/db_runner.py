@@ -117,13 +117,13 @@ class DBRunner:
 
     # Creates a new flight
     def create_flight(self, aircraft_id, origin, destination, duration, departure_date,
-                      departure_time, arrival_date, arrival_time):
+                      departure_time, arrival_date, arrival_time, cost_of_flight):
         self.cursor.execute(f"INSERT INTO Flights "
                             f"(AircraftID, Origin, Destination, Duration, DepartureDate, "
-                            f"DepartureTime, ArrivalDate, ArrivalTime, NumberOfPassengers) "
+                            f"DepartureTime, ArrivalDate, ArrivalTime, CostOfFlight, NumberOfPassengers) "
                             f"VALUES "
                             f"({aircraft_id}, '{origin}', '{destination}', '{duration}', '{departure_date}', "
-                            f"'{departure_time}', '{arrival_date}', '{arrival_time}' , 0);")
+                            f"'{departure_time}', '{arrival_date}', '{arrival_time}', {cost_of_flight}, 0);")
         self.conn.commit()
 
     # Allows a staff member to allocate a plane to a flight

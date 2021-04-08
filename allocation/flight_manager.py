@@ -17,16 +17,17 @@ class FlightManager:
             departure_time = input("Enter the departure time: ")
             arrival_date = input("Enter the arrival date: ")
             arrival_time = input("Enter the arrival time: ")
+            cost_of_flight = int(input("Enter the cost of the flight:  £"))
             print(f"Aircraft ID: {aircraft_id} | Origin: {origin} | Destination: {destination} \n"
                   f"Duration: {duration} | Departure Date: {departure_date} | Departure Time: {departure_time} \n"
-                  f"Arrival Date: {arrival_date} | Arrival Time: {arrival_time}")
+                  f"Arrival Date: {arrival_date} | Arrival Time: {arrival_time} | Cost of Flight: {cost_of_flight}")
             check = input("Is the above information correct (Y/N)? ").upper()
             if check in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True
 
         # Insert the flight into the table
         self.conn.create_flight(aircraft_id, origin, destination, duration, departure_date,
-                                departure_time, arrival_date, arrival_time)
+                                departure_time, arrival_date, arrival_time, cost_of_flight)
         print("Flight created successfully.")
 
     def display_available_flights(self):
@@ -36,7 +37,7 @@ class FlightManager:
         else:
             flight_table = PrettyTable(["Flight ID", "Aircraft ID", "Origin", "Destination",
                                         "Duration", "Departure Date", "Departure Time",
-                                        "Arrival Date", "Arrival Time", "No. of Passengers"])
+                                        "Arrival Date", "Arrival Time", "Cost of Flight", "No. of Passengers"])
             for flight in available_flights:
                 flight_table.add_row(flight)
             print(flight_table)
