@@ -151,6 +151,18 @@ class DBRunner:
                                              f"WHERE AircraftID = {aircraft_id};").fetchone()[0]
         return num_passengers >= plane_capacity
 
+    # Checks if a passenger is already on a flight.
+    def is_passenger_on_flight(self, first_name, last_name, ticket_number, passport_number, flight_id):
+        result = self.cursor.execute(f"SELECT * "
+                                     f"FROM Passengers p INNER JOIN Bookings b "
+                                     f"ON p.PassengerID = b.PassengerID "
+                                     f"WHERE p.FirstName = '{first_name}' AND "
+                                     f"p.LastName = '{last_name}' AND "
+                                     f"p.TicketNumber = '{ticket_number}' AND "
+                                     f"p.PassportNumber = '{passport_number}' AND "
+                                     f"b.FlightID = {flight_id};").fetchone()
+        return result is not None
+
 
 if __name__ == "__main__":
     runner = DBRunner()
@@ -159,4 +171,3 @@ if __name__ == "__main__":
     print(runner.conn.execute("SELECT * FROM Passengers").fetchall())
     print(runner.conn.execute("SELECT * FROM Bookings").fetchall())
     print(runner.check_staff_login("KingBigW", "Password123"))
-
