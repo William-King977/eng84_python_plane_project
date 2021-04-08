@@ -120,10 +120,10 @@ class DBRunner:
                       departure_time, arrival_date, arrival_time):
         self.cursor.execute(f"INSERT INTO Flights "
                             f"(AircraftID, Origin, Destination, Duration, DepartureDate, "
-                            f"DepartureTime, ArrivalDate, ArrivalTime) "
+                            f"DepartureTime, ArrivalDate, ArrivalTime, NumberOfPassengers) "
                             f"VALUES "
                             f"({aircraft_id}, '{origin}', '{destination}', '{duration}', '{departure_date}', "
-                            f"'{departure_time}', '{arrival_date}', '{arrival_time}');")
+                            f"'{departure_time}', '{arrival_date}', '{arrival_time}' , 0);")
         self.conn.commit()
 
     # Allows a staff member to allocate a plane to a flight
@@ -132,6 +132,24 @@ class DBRunner:
                             f"SET AircraftID = {aircraft_id} "
                             f"WHERE FlightID = {flight_id};")
         self.conn.commit()
+
+    # Increments the number of passengers on a flight by 1.
+    def update_number_of_flight_passengers(self, flight_id):
+        self.cursor.execute(f"UPDATE Flights "
+                            f"SET NumberOfPassengers = NumberOfPassengers + 1 "
+                            f"WHERE FlightID = {flight_id};")
+        self.conn.commit()
+
+    # Checks if a flight is fully booked.
+    def is_flight_full(self, flight_id):
+        flight = self.cursor.execute(f"SELECT AircraftID, NumberOfPassengers FROM Flights "
+                                     f"WHERE FlightID = {flight_id};").fetchone()
+
+        aircraft_id = flight[0]
+        num_passengers = flight[1]
+        plane_capacity = self.cursor.execute(f"SELECT FlightCapacity FROM Aircraft "
+                                             f"WHERE AircraftID = {aircraft_id};")
+        return num_passengers >= plane_capacity
 
 
 if __name__ == "__main__":
