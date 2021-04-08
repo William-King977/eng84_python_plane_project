@@ -53,10 +53,10 @@ def display_flight_passengers():
         print("No passengers for that flight.")
     else:
         passenger_table = PrettyTable(["First Name", "Last Name", "Passport Number"])
-        print(flight_passengers)
         for passenger in flight_passengers:
             passenger_table.add_row(passenger)
         print(passenger_table)
+    input("Press enter to continue.")
 
 
 def main_menu():

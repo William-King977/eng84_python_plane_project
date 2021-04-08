@@ -58,6 +58,20 @@ class DBRunner:
                                      "WHERE AircraftType = 'Plane';").fetchall()
         return result
 
+    # Sets the password for the currently logged in staff member.
+    def set_curr_password(self, password):
+        # Delete the table row first.
+        self.cursor.execute("DELETE FROM CurrentPassword;")
+        self.cursor.execute(f"INSERT INTO CurrentPassword "
+                            f"(Password) "
+                            f"VALUES "
+                            f"('{password}');")
+        self.conn.commit()
+
+    # Gets the password of the currently logged in staff member.
+    def get_curr_password(self):
+        return self.cursor.execute("SELECT Password FROM CurrentPassword;").fetchone()[0]
+
     # Adds a new staff member to the system.
     def register_staff(self, first_name, last_name, username, password):
         self.cursor.execute(f"INSERT INTO Staff "
@@ -128,8 +142,3 @@ if __name__ == "__main__":
     print(runner.conn.execute("SELECT * FROM Bookings").fetchall())
     print(runner.check_staff_login("KingBigW", "Password123"))
 
-    # [(1, 1, 'Heathrow', 'Palma', 180, '11/04/2021', '13:00', '11/04/2021', '16:00'),
-    #  (2, 1, 'Dublin', 'Paris', 120, '15/04/2021', '23:00', '16/04/2021', '01:00')]
-    # [(1, 'Chris', 'Wilson', '1234', '12345678'), (2, 'Brian', 'Burke', '98765', '98765432'),
-    #  (3, 'Sarah', 'Shaw', '57493', '57493901')]
-    # [(1, 1, 1, '08/04/2021', '08:14'), (2, 1, 2, '08/04/2021', '08:15'), (3, 2, 3, '08/04/2021', '08:15')]

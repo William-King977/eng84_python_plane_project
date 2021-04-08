@@ -15,7 +15,7 @@ class RegisterStaff:
         while not correct_info:
             self.first_name = input("Input staff first name: ")
             self.last_name = input("Input staff last name: ")
-            print("First name:", self.first_name, "| Last name:",self.last_name)
+            print("First name:", self.first_name, "| Last name:", self.last_name)
             check = input("Is the above information correct (Y/N)? ").upper()
             if check.upper() in ["YES", "TRUE", "T", "Y"]:
                 correct_info = True

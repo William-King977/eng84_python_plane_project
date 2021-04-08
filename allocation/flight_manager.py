@@ -40,6 +40,7 @@ class FlightManager:
             for flight in available_flights:
                 flight_table.add_row(flight)
             print(flight_table)
+        input("Press enter to continue.")
 
     def display_all_planes(self):
         all_planes = self.conn.get_all_planes()
@@ -50,12 +51,16 @@ class FlightManager:
             for plane in all_planes:
                 plane_table.add_row(plane)
             print(plane_table)
+        input("Press enter to continue.")
 
     def allocate_plane(self):
+        # Get the staff's password
+        staff_password = self.conn.get_curr_password()
+
         # Ask for a password
         for i in range(3):
             password = input("Enter password: ")
-            if password == "password123":
+            if password == staff_password:
                 flight_id = int(input("Enter the flight ID of the flight to modify: "))
                 aircraft_id = int(input("Enter the aircraft ID of the plane: "))
                 self.conn.add_aircraft_to_flight(flight_id, aircraft_id)
