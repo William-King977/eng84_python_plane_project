@@ -120,10 +120,10 @@ class DBRunner:
                       departure_time, arrival_date, arrival_time):
         self.cursor.execute(f"INSERT INTO Flights "
                             f"(AircraftID, Origin, Destination, Duration, DepartureDate, "
-                            f"DepartureTime, ArrivalDate, ArrivalTime) "
+                            f"DepartureTime, ArrivalDate, ArrivalTime, NumberOfPassengers) "
                             f"VALUES "
                             f"({aircraft_id}, '{origin}', '{destination}', '{duration}', '{departure_date}', "
-                            f"'{departure_time}', '{arrival_date}', '{arrival_time}');")
+                            f"'{departure_time}', '{arrival_date}', '{arrival_time}' , 0);")
         self.conn.commit()
 
     # Allows a staff member to allocate a plane to a flight
@@ -133,6 +133,36 @@ class DBRunner:
                             f"WHERE FlightID = {flight_id};")
         self.conn.commit()
 
+    # Increments the number of passengers on a flight by 1.
+    def update_number_of_flight_passengers(self, flight_id):
+        self.cursor.execute(f"UPDATE Flights "
+                            f"SET NumberOfPassengers = NumberOfPassengers + 1 "
+                            f"WHERE FlightID = {flight_id};")
+        self.conn.commit()
+
+    # Checks if a flight is fully booked.
+    def is_flight_full(self, flight_id):
+        flight = self.cursor.execute(f"SELECT AircraftID, NumberOfPassengers FROM Flights "
+                                     f"WHERE FlightID = {flight_id};").fetchone()
+
+        aircraft_id = flight[0]
+        num_passengers = flight[1]
+        plane_capacity = self.cursor.execute(f"SELECT FlightCapacity FROM Aircraft "
+                                             f"WHERE AircraftID = {aircraft_id};").fetchone()[0]
+        return num_passengers >= plane_capacity
+
+    # Checks if a passenger is already on a flight.
+    def is_passenger_on_flight(self, first_name, last_name, ticket_number, passport_number, flight_id):
+        result = self.cursor.execute(f"SELECT * "
+                                     f"FROM Passengers p INNER JOIN Bookings b "
+                                     f"ON p.PassengerID = b.PassengerID "
+                                     f"WHERE p.FirstName = '{first_name}' AND "
+                                     f"p.LastName = '{last_name}' AND "
+                                     f"p.TicketNumber = '{ticket_number}' AND "
+                                     f"p.PassportNumber = '{passport_number}' AND "
+                                     f"b.FlightID = {flight_id};").fetchone()
+        return result is not None
+
 
 if __name__ == "__main__":
     runner = DBRunner()
@@ -141,4 +171,3 @@ if __name__ == "__main__":
     print(runner.conn.execute("SELECT * FROM Passengers").fetchall())
     print(runner.conn.execute("SELECT * FROM Bookings").fetchall())
     print(runner.check_staff_login("KingBigW", "Password123"))
-
