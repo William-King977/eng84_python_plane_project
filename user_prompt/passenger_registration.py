@@ -24,9 +24,12 @@ class BookingManager:
                 correct_info = True
 
     def register_passenger(self):
-        self.conn.register_passenger(self.first_name, self.last_name, self.ticket_number,
-                                     self.passport_number, self.flight_id)
-        print("Passenger added to the flight successfully.")
+        if passengers_on_flight < 100:  # passengers_on_flight check flight table for current passengers, 100 check flight capacity using given flight ID
+            self.conn.register_passenger(self.first_name, self.last_name, self.ticket_number,
+                                         self.passport_number, self.flight_id)
+            print("Passenger added to the flight successfully.")
+        else:
+            print("Sorry, this flight is full.")  # Print that the flight is full and do not add data to table
 
 
 if __name__ == "__main__":
