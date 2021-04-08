@@ -36,7 +36,7 @@ class FlightManager:
         else:
             flight_table = PrettyTable(["Flight ID", "Aircraft ID", "Origin", "Destination",
                                         "Duration", "Departure Date", "Departure Time",
-                                        "Arrival Date", "Arrival Time"])
+                                        "Arrival Date", "Arrival Time", "No. of Passengers"])
             for flight in available_flights:
                 flight_table.add_row(flight)
             print(flight_table)

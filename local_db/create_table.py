@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS Flights (
     DepartureTime TIME NOT NULL,
     ArrivalDate DATE NOT NULL,
     ArrivalTime TIME NOT NULL,
+    NumberOfPassengers INTEGER NOT NULL,
     FOREIGN KEY(AircraftID) REFERENCES Aircraft(AircraftID)
 );
 """)

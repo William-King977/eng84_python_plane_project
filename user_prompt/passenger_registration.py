@@ -24,9 +24,19 @@ class BookingManager:
                 correct_info = True
 
     def register_passenger(self):
-        self.conn.register_passenger(self.first_name, self.last_name, self.ticket_number,
-                                     self.passport_number, self.flight_id)
-        print("Passenger added to the flight successfully.")
+        # If the flight is full.
+        if self.conn.is_flight_full(self.flight_id):
+            print("Sorry, the flight is full.")
+        # Check if the passenger is already on the selected flight.
+        elif self.conn.is_passenger_on_flight(self.first_name, self.last_name, self.ticket_number,
+                                              self.passport_number, self.flight_id):
+            print("Sorry, the passenger is already assigned to this flight.")
+        else:
+            # Add the passenger and update the number of passengers for that flight.
+            self.conn.register_passenger(self.first_name, self.last_name, self.ticket_number,
+                                         self.passport_number, self.flight_id)
+            self.conn.update_number_of_flight_passengers(self.flight_id)
+            print("Passenger added to the flight successfully.")
 
 
 if __name__ == "__main__":
