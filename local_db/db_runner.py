@@ -34,7 +34,7 @@ class DBRunner:
 
     # Gets every passenger for a particular flight
     def get_flight_passengers(self, flight_id):
-        result = self.cursor.execute(f"SELECT p.FirstName, p.LastName, p.PassportNumber "
+        result = self.cursor.execute(f"SELECT p.PassengerID, p.FirstName, p.LastName, p.PassportNumber "
                                      f"FROM Passengers p INNER JOIN Bookings b "
                                      f"ON p.PassengerID = b.PassengerID "
                                      f"WHERE b.FlightID = {flight_id};").fetchall()
@@ -93,21 +93,15 @@ class DBRunner:
         return staff_member[4] == password
 
     # Adds a passenger to a flight with their details
-    def register_passenger(self, first_name, last_name, ticket_number, passport_number, flight_id):
+    def register_passenger(self, first_name, last_name, ticket_number, passport_number):
         self.cursor.execute(f"INSERT INTO Passengers "
                             f"(FirstName, LastName, TicketNumber, PassportNumber) "
                             f"VALUES "
                             f"('{first_name}', '{last_name}', '{ticket_number}', '{passport_number}');")
         self.conn.commit()
-        new_passenger_id = self.cursor.execute(f"SELECT PassengerID FROM Passengers "
-                                               f"WHERE FirstName = '{first_name}' AND "
-                                               f"LastName = '{last_name}' AND "
-                                               f"TicketNumber = '{ticket_number}' AND "
-                                               f"PassportNumber = '{passport_number}'").fetchone()[0]
-        self.__create_booking(new_passenger_id, flight_id)
 
     # Creates a booking for the added passenger
-    def __create_booking(self, passenger_id, flight_id):
+    def create_booking(self, passenger_id, flight_id):
         self.cursor.execute(f"INSERT INTO Bookings "
                             f"(FlightID, PassengerID, BookingDate, BookingTime) "
                             f"VALUES "
@@ -152,15 +146,11 @@ class DBRunner:
         return num_passengers >= plane_capacity
 
     # Checks if a passenger is already on a flight.
-    def is_passenger_on_flight(self, first_name, last_name, ticket_number, passport_number, flight_id):
+    def is_passenger_on_flight(self, passenger_id, flight_id):
         result = self.cursor.execute(f"SELECT * "
-                                     f"FROM Passengers p INNER JOIN Bookings b "
-                                     f"ON p.PassengerID = b.PassengerID "
-                                     f"WHERE p.FirstName = '{first_name}' AND "
-                                     f"p.LastName = '{last_name}' AND "
-                                     f"p.TicketNumber = '{ticket_number}' AND "
-                                     f"p.PassportNumber = '{passport_number}' AND "
-                                     f"b.FlightID = {flight_id};").fetchone()
+                                     f"FROM Bookings "
+                                     f"WHERE PassengerID = {passenger_id} AND "
+                                     f"FlightID = {flight_id};").fetchone()
         return result is not None
 
 
@@ -171,3 +161,4 @@ if __name__ == "__main__":
     print(runner.conn.execute("SELECT * FROM Passengers").fetchall())
     print(runner.conn.execute("SELECT * FROM Bookings").fetchall())
     print(runner.check_staff_login("KingBigW", "Password123"))
+    print(runner.is_passenger_on_flight(1, 1))
