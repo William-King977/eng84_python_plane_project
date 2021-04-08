@@ -1,6 +1,7 @@
 # Test for flight trip
 from flight_trip.flight_trip import FlightTrip
 import unittest
+import pytest
 
 
 class FlightTest(unittest.TestCase):
