@@ -148,7 +148,7 @@ class DBRunner:
         aircraft_id = flight[0]
         num_passengers = flight[1]
         plane_capacity = self.cursor.execute(f"SELECT FlightCapacity FROM Aircraft "
-                                             f"WHERE AircraftID = {aircraft_id};")
+                                             f"WHERE AircraftID = {aircraft_id};").fetchone()[0]
         return num_passengers >= plane_capacity
 
 
